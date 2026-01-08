@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def home(request):
-    return render(request,'home.html')
+    return render(request,'dashboard.html')
 
 
 def signup(request):
@@ -18,7 +18,7 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('dashboard')
     else:
         form = UserCreationForm()
     return render(request,'signup.html',{'form':form})
@@ -31,7 +31,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
-            return redirect('home')
+            return redirect('dashboard')
     else:
         form = AuthenticationForm()
     return render(request,'login.html',{'form':form})
@@ -39,4 +39,4 @@ def login_view(request):
 
 def logout_view(request):
     auth_logout(request)
-    return redirect('home')
+    return redirect('dashboard')
