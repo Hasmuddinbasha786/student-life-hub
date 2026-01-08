@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Welcome, {{ user.username }} 👋</h2>
+<p>Today: {{ today }}</p>
+
+<h4 class="mt-4">📚 Upcoming Assignments</h4>
+<ul class="list-group">
+    {% for a in assignments %}
+    <li class="list-group-item">
+        {{ a.title }} ({{ a.subject }}) – due {{ a.due_date }}
+    </li>
+    {% empty %}
+    <li class="list-group-item">No pending assignments 🎉</li>
+    {% endfor %}
+</ul>
+
+<h4 class="mt-4">🔥 Habits</h4>
+<ul class="list-group">
+    {% for h in habits %}
+    <li class="list-group-item">
+        {{ h.name }} – Streak: {{ h.streak }}
+    </li>
+    {% empty %}
+    <li class="list-group-item">No habits yet</li>
+    {% endfor %}
+</ul>
+{% endblock %}

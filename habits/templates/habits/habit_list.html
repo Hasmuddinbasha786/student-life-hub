@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>My Habits</h2>
+
+<a class="btn btn-primary mb-3" href="{% url 'habit_add' %}">Add Habit</a>
+
+<ul class="list-group">
+    {% for h in habits %}
+    <li class="list-group-item d-flex justify-content-between">
+        {{ h.name }} 🔥 {{ h.streak }}
+        <span>
+            <a href="{% url 'habit_done' h.id %}" class="btn btn-success btn-sm">Done</a>
+            <a href="{% url 'habit_delete' h.id %}" class="btn btn-danger btn-sm">Delete</a>
+        </span>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

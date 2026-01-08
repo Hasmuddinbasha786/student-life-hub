@@ -1,0 +1,7 @@
+<h2>Add Habit</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="Habit name" required>
+    <button type="submit">Save</button>
+</form>
